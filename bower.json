@@ -1,0 +1,23 @@
+{
+  "name": "high-impress-starter",
+  "version": "0.1.0",
+  "authors": [
+    "Christoph Hoffmann <christoph.hoffmann@nestedloop.de>"
+  ],
+  "description": "A starter template for high-impress presentations",
+  "main": "index.html",
+  "keywords": [
+    "high-impress"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "high-impress": "~0.5.1"
+  }
+}
