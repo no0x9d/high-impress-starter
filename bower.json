@@ -18,6 +18,6 @@
     "tests"
   ],
   "dependencies": {
-    "high-impress": "~0.5.1"
+    "high-impress": "latest"
   }
 }
