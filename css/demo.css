@@ -206,6 +206,9 @@ hi-step {
 hi-step.active {
   opacity: 1;
 }
+hi-title {
+  width: 900px;
+}
 /*
     These 'slide' step styles were heavily inspired by HTML5 Slides:
     http://html5slides.googlecode.com/svn/trunk/styles.css
