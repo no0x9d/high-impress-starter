@@ -1,6 +1,6 @@
 {
   "name": "high-impress-starter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A starter template for high-impress presentations to boost your productivity",
   "dependencies": {
     "node-static": "^0.7.6"
