@@ -1,3 +1,6 @@
+# JavaScript dependencies managed by Bower
+vendor/
+
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 

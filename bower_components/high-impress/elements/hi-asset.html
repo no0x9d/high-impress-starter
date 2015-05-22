@@ -1,0 +1,40 @@
+<link rel="import" href="../../polymer/polymer.html">
+
+<polymer-element name="hi-asset" extends="hi-base">
+    <script>
+        (function () {
+            function removeClasses(element){
+                var classList = element.classList;
+                classList.remove('show');
+                classList.remove('hide');
+                classList.remove('fade-in');
+                classList.remove('fade-out');
+            }
+
+            function setState(state, element){
+                removeClasses(element);
+                element.classList.add(state);
+            }
+
+            Polymer({
+                show: function () {
+                    setState('show', this);
+                    this.fire('show');
+                },
+                hide: function () {
+                    setState('hide', this);
+                    this.fire('hide');
+                },
+                fadeIn: function (timer) {
+                    setState('fade-in', this);
+                    this.fire('fade-in');
+                },
+                fadeOut: function (timer) {
+                    setState('fade-out', this);
+                    this.fire('fade-out');
+                }
+            });
+        })();
+    </script>
+</polymer-element>
+

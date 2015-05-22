@@ -1,0 +1,23 @@
+{
+  "name": "high-impress",
+  "version": "0.20.0",
+  "authors": [
+    "Christoph Hoffmann <Christoph.Hoffmann@adesso.de>"
+  ],
+  "description": "A HTML5, CSS & JS presentation framework build ontop of the great impress.js",
+  "main": "high-impress.html",
+  "dependencies": {
+    "marked": "~0.3.3",
+    "polymer": "Polymer/polymer#0.5"
+  },
+  "homepage": "https://github.com/no0x9d/high-impress",
+  "_release": "0.20.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.20.0",
+    "commit": "3360d22e20500ebd065c91a2bd38e03cdaee5d0b"
+  },
+  "_source": "git://github.com/no0x9d/high-impress.git",
+  "_target": "*",
+  "_originalSource": "high-impress"
+}
