@@ -1,0 +1,30 @@
+{
+  "name": "high-impress-starter",
+  "version": "0.1.0",
+  "description": "A starter template for high-impress presentations to boost your productivity",
+  "dependencies": {
+    "node-static": "^0.7.6"
+  },
+  "scripts": {
+    "serve": "static",
+    "start": "static"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://no0x9d@github.com/no0x9d/high-impress-starter.git"
+  },
+  "keywords": [
+    "high-impress",
+    "web-components",
+    "presentations"
+  ],
+  "author": "Christoph Hoffmann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/no0x9d/high-impress-starter/issues"
+  },
+  "homepage": "https://github.com/no0x9d/high-impress-starter#readme"
+}
