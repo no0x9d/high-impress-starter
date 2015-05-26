@@ -19,5 +19,8 @@
   ],
   "dependencies": {
     "high-impress": "master"
+  },
+  "devDependencies": {
+    "less": "~2.5.1"
   }
 }
