@@ -13,13 +13,6 @@
             // get a reference on our helper api
             var hi = window.HighImpress;
 
-            // `toNumber` takes a value given as `numeric` parameter and tries to turn
-            // it into a number. If it is not possible it returns 0 (or other value
-            // given as `fallback`).
-            var toNumber = function toNumber(numeric, fallback) {
-                return isNaN(numeric) ? (fallback || 0) : Number(numeric);
-            };
-
             // `getStep` is a helper function that returns a step element defined by parameter.
             // If a number is given, step with index given by the number is returned, if a string
             // is given step element with such id is returned, if DOM element is given it is returned
@@ -70,7 +63,7 @@
             };
 
             var setIds = function(steps){
-                for(var i = 1 ; i < steps.length ; i++){
+                for(var i = 0 ; i < steps.length ; i++){
                     var step = steps[i];
                     if(!step.id){
                         var id = 'hi-step-' + (i + 1);
@@ -124,7 +117,9 @@
                         position: "absolute",
                         transformOrigin: "top left",
                         transition: "all 0s ease-in-out",
-                        transformStyle: "preserve-3d"
+                        transformStyle: "preserve-3d",
+                        width: this.width +"px",
+                        height: this.height +"px"
                     };
                     var blackoutId = "blackout";
 
@@ -295,11 +290,13 @@
 
                     this.goto(getElementFromHash() || this.steps[0], 0);
                 },
-                nextStep: function next(){
+                nextStep: function next(duration){
+                    var duration = isNaN(duration) ? this.activeStep.duration : duration;
                     var steps = this.steps;
                     var next = 0;
+                    //checks for a nextStep attribute on the active step
                     if ( this.activeStep && this.activeStep.nextStep) {
-                        var el = this.goto(this.activeStep.nextStep);
+                        var el = this.goto(this.activeStep.nextStep, duration);
                         if(el){
                             return el;
                         }
@@ -308,17 +305,18 @@
                         next = steps.indexOf(this.activeStep) + 1;
                     }
                     next = next < steps.length ? steps[ next ] : steps[ 0 ];
-                    return this.goto(next);
+                    return this.goto(next, duration);
                 },
-                nextSubstep: function () {
+                nextSubstep: function (duration) {
                     if(!this.activeStep || !this.activeStep.nextSubstep()){
-                        this.nextStep();
+                        return this.nextStep(duration);
                     }
                 },
-                prevStep: function prev(){
+                prevStep: function prev(duration){
                     var steps = this.steps;
+                    //checks for a valid prevStep attribute on the active step
                     if ( this.activeStep && this.activeStep.prevStep) {
-                        var el = this.goto(this.activeStep.prevStep);
+                        var el = this.goto(this.activeStep.prevStep, duration);
                         if(el){
                             return el;
                         }
@@ -326,7 +324,7 @@
                     var prev = steps.indexOf(this.activeStep) - 1;
                         prev = prev >= 0 ? steps[prev] : steps[steps.length - 1];
 
-                    return this.goto(prev);
+                    return this.goto(prev, duration);
                 },
                 goto : function goto(el, duration) {
 
@@ -384,7 +382,7 @@
                     // with scaling down and move and rotation are delayed.
                     var zoomin = target.scale >= currentState.scale;
 
-                    duration = toNumber(duration, this.transitionDuration);
+                    duration = this.toNumber(duration, this.transitionDuration);
                     var delay = (duration / 2);
 
                     // if the same step is re-selected, force computing window scaling,
@@ -480,32 +478,31 @@
 
 <!--
 Navigation API
-    (x) goto
-    (x) next
-    (x) prev
-    (x) nextSupstep
-    prevSubstep
+    [x] goto
+    [x] next
+    [x] prev
+    [x] nextSupstep
+    [] prevSubstep
 Event API
-    onleaving Step
-    (x) leaving Step
-    onenter Step
-    (x) enter Step
+    [x] leaving Step
+    [] entering Step
+    [x] enter Step
 Status API
-    (x) actual Step
-    actual index of step
-    actual number of step
-    (x) number of Steps
-    (x) list of steps
-    Printing Mode
-    Black Key
-    Presenter Mode
+    [x] actual Step
+    [] actual index of step
+    [] actual number of step
+    [x] number of Steps
+    [x] list of steps
+    [] Printing Mode
+    [] Black Key
+    [] Presenter Mode
 
 Features
-    (x) Markdown Elements
-    Fast-Forward to state of actual setp after reload
-    auto positions for steps
-    (x) selected steps and sequence per api call
-    currentstep/numSteps Overlay for hi-step
+    [x] Markdown Elements
+    [] Fast-Forward to state of actual setp after reload
+    [] auto positions for steps
+    [x] selected steps and sequence per api call
+    [] currentstep/numSteps Overlay for hi-step
 
 
 -->

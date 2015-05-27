@@ -67,6 +67,7 @@
     }
 
     function setSteps(steps, presentation){
+        presentation = presentation || getPresentation();
         if(polymerReady){
             presentation.setSteps(steps);
         }else {
@@ -78,15 +79,14 @@
 
     function getPresentation() {
         var element = document.currentScript;
-        while (element.nodeName.toLowerCase() !== "hi-presentation") {
+        while (element && element.nodeName.toLowerCase() !== "hi-presentation") {
             if (element === document.documentElement) {
-                return;
+                break;
             } else {
                 element = element.parentNode;
             }
         }
-        return element;
-
+        return element || $("hi-presentation");
     }
 
     api.ready = ready;
