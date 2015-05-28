@@ -444,6 +444,11 @@
                     this.currentState = target;
                     this.activeStep = activeStep = el;
 
+                    // Fire a entering event after the transition started. This may be important, because it's not sure
+                    // that the now step is entered. The transition is canceled when a goto is triggered while the animation
+                    // lasts, omitting a enter event and just triggers a new leave event.
+                    activeStep.fire('entering');
+
                     // And here is where we trigger `enter` event.
                     // We simply set up a timeout to fire it taking transition duration (and possible delay) into account.
                     //
@@ -478,31 +483,32 @@
 
 <!--
 Navigation API
-    [x] goto
-    [x] next
-    [x] prev
-    [x] nextSupstep
-    [] prevSubstep
+    (x) goto
+    (x) next
+    (x) prev
+    (x) nextSupstep
+    prevSubstep
 Event API
-    [x] leaving Step
-    [] entering Step
-    [x] enter Step
+    onleaving Step
+    (x) leaving Step
+    onenter Step
+    (x) enter Step
 Status API
-    [x] actual Step
-    [] actual index of step
-    [] actual number of step
-    [x] number of Steps
-    [x] list of steps
-    [] Printing Mode
-    [] Black Key
-    [] Presenter Mode
+    (x) actual Step
+    actual index of step
+    actual number of step
+    (x) number of Steps
+    (x) list of steps
+    Printing Mode
+    Black Key
+    Presenter Mode
 
 Features
-    [x] Markdown Elements
-    [] Fast-Forward to state of actual setp after reload
-    [] auto positions for steps
-    [x] selected steps and sequence per api call
-    [] currentstep/numSteps Overlay for hi-step
+    (x) Markdown Elements
+    Fast-Forward to state of actual setp after reload
+    auto positions for steps
+    (x) selected steps and sequence per api call
+    currentstep/numSteps Overlay for hi-step
 
 
 -->

@@ -1,6 +1,5 @@
 {
   "name": "high-impress",
-  "version": "0.20.0",
   "authors": [
     "Christoph Hoffmann <Christoph.Hoffmann@adesso.de>"
   ],
@@ -11,13 +10,13 @@
     "polymer": "Polymer/polymer#0.5"
   },
   "homepage": "https://github.com/no0x9d/high-impress",
-  "_release": "0.20.0",
+  "_release": "80afb0c838",
   "_resolution": {
-    "type": "version",
-    "tag": "v0.20.0",
-    "commit": "3360d22e20500ebd065c91a2bd38e03cdaee5d0b"
+    "type": "branch",
+    "branch": "master",
+    "commit": "80afb0c838a22a1ee5959462d0cfe82e86711d0c"
   },
   "_source": "git://github.com/no0x9d/high-impress.git",
-  "_target": "*",
+  "_target": "master",
   "_originalSource": "high-impress"
 }
