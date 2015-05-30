@@ -10,11 +10,11 @@
     "polymer": "Polymer/polymer#0.5"
   },
   "homepage": "https://github.com/no0x9d/high-impress",
-  "_release": "80afb0c838",
+  "_release": "0eb33cf41c",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "80afb0c838a22a1ee5959462d0cfe82e86711d0c"
+    "commit": "0eb33cf41c7590f8fc935f3c0ba1004d35ecd00b"
   },
   "_source": "git://github.com/no0x9d/high-impress.git",
   "_target": "master",
