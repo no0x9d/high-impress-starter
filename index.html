@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <!-- 1. Load platform support before any code that touches the DOM. -->
-    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="bower_components/high-impress/libs/helper.js"></script>
+    <script>
+        window.Polymer = window.Polymer || {};
+        window.Polymer.dom = 'shadow';
+    </script>
     <!-- 2. Load the component using an HTML Import -->
     <link rel="import" href="bower_components/high-impress/high-impress.html">
     <!-- Load our high-impress with all baseelements-->
@@ -25,41 +30,46 @@
 <!-- Define the presentation with a width and height. There could potentially be more than one presentation per page-->
 <hi-presentation width="1280" height="720">
 
-    <hi-title id="maintitle">
+    <hi-step id="maintitle" transition-duration="0">
         <h1>HIGH-IMPRESS</h1>
         <h2>just impressive</h2>
-    </hi-title>
+    </hi-step>
 
     <!-- a basic step in the presentation. The inner html structure completly up to you-->
-    <hi-step id="title" class="slide" y="-600">
+    <hi-step id="title" class="slide" y="-600" rotate="90">
         <h1>high-impress</h1>
 
         <h2>Presentations with high level impress.js</h2>
 
         <div>
-            <p>impress.js is a great tool for building impressive presentations in HTML5 & CSS3, and it is also open source.
-            </p>
+            <p> impress.js is a great tool for building impressive presentations in HTML5 & CSS3, and it is also open
+                source. </p>
 
-            <p>But you a working on a fairly low level and it's hard for beginners to use.
+            <p> But you a working on a fairly low level and it's hard for beginners to use.
                 So high-impress steps in and trys to gives you a higher level abstraction based on the new HTML5
                 technologies.</p>
 
-            <p>At the moment it just adds nice custom HTML5 elements to build basic presentations, but more features like
-            auto-layouts and plugins are on there way.</p>
+            <p> At the moment it just adds nice custom HTML5 elements to build basic presentations, but more features
+                like auto-layouts and plugins are on there way.</p>
         </div>
     </hi-step>
 
     <!-- a step which is moved on the x-axis and rotated around the z-axis -->
-    <hi-step id="features" class="slide" x="1500" rotateZ="23">
+    <hi-step id="features" class="slide" x="1500" rotate-z="23">
         <h1>Features</h1>
-        <ul>
+        <ul class="substeps">
             <!-- all elements with a class of substep are shown in order they are defined. Elements can be grouped by
              the data-group attribute to trigger a simultaneously show. -->
-            <li class="substep">presentations on a infinite pane</li>
-            <li class="substep">3D Transitions</li>
-            <li class="substep">Substeps</li>
-            <li class="substep" data-group="1">Background graphics</li>
-            <li class="substep" data-group="1">more ...</li>
+            <li>presentations on a infinite pane</li>
+            <li>auto positioning for steps</li>
+            <li>3D Transitions</li>
+            <li>Substeps</li>
+            <li>event driven interactions</li>
+            <li>javascript api</li>
+            <li>markdown support</li>
+            <li>pure CSS based styling</li>
+            <li data-group="1">Background graphics</li>
+            <li data-group="1">more ...</li>
         </ul>
     </hi-step>
 

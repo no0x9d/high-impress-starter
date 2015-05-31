@@ -1,11 +1,13 @@
 <link rel="import" href="../../polymer/polymer.html">
 
-<polymer-element name="hi-presentation" extends="hi-basefunctions">
+<dom-module id="hi-presentation">
     <template>
         <div id="canvas">
             <content></content>
         </div>
     </template>
+</dom-module>
+
     <script>
         (function () {
             // Run once. Private and static to the element.
@@ -75,7 +77,7 @@
 
             var setSteps = function (steps, presentation) {
                 if (steps.length > 0) {
-                    presentation.steps = steps;
+                    presentation._setSteps(steps);
                 }
             };
 
@@ -101,24 +103,85 @@
 
             // Run for every instance of the element that's created.
             Polymer({
-                publish: {
-                    width: 1024,
-                    height: 768,
-                    maxScale: 1,
-                    minScale: 0,
-                    perspective: 1000,
-                    transitionDuration: 1000,
-                    autoPosition: false,
-                    autoMargin: 0
+                is: "hi-presentation",
+
+                behaviors: [hi.BaseFunctions],
+
+                properties: {
+                    // Attributes
+                    width: {
+                        type: Number,
+                        value: 1024
+                    },
+                    height: {
+                        type: Number,
+                        value: 768
+                    },
+                    maxScale: {
+                        type: Number,
+                        value: 1
+                    },
+                    minScale: {
+                        type: Number,
+                        value: 0
+                    },
+                    perspective: {
+                        type: Number,
+                        value: 1000
+                    },
+                    transitionDuration: {
+                        type: Number,
+                        value: 1000
+                    },
+                    autoPosition: {
+                        type: Boolean,
+                        value: false
+                    },
+                    autoMargin: {
+                        type: Number,
+                        value: 0
+                    },
+                    // Properties (read only)
+                    activeStep:{
+                        type: Object,
+                        readOnly: true
+                    },
+                    steps:{
+                        type: Array,
+                        readOnly: true
+                    },
+                    numberOfStep: {
+                        type: Number,
+                        computed: "computeNumOfSteps(steps)"
+                    },
+                    activeIndex: {
+                        type: Number,
+                        computed: "computeActiveIndex(activeStep, steps)"
+                    },
+                    activeNumber: {
+                        type: Number,
+                        computed: "computeActiveNumber(activeStep, steps)"
+                    },
                 },
-                computed: {
-                    numStep: 'steps.length'
+
+                computeActiveIndex: function(activeStep, steps){
+                    return steps.indexOf(activeStep);
                 },
+
+                computeActiveNumber: function(activeStep, steps){
+                    return steps.indexOf(activeStep) + 1;
+                },
+
+                computeNumOfSteps: function(steps){
+                    return steps.length;
+                },
+
                 ready: function () {
+                    console.log("presentation ready");
                     var root = this;
                     var canvas = this.$.canvas;
                     var body = document.body;
-                    var windowScale = this.windowScale = computeWindowScale(this);
+                    var windowScale = this._windowScale = computeWindowScale(this);
                     var rootStyles = {
                         position: "absolute",
                         transformOrigin: "top left",
@@ -143,7 +206,7 @@
                     this.css(canvas, rootStyles);
 
                     // set a default initial state of the canvas
-                    this.currentState = {
+                    this._currentState = {
                         translate: {x: 0, y: 0, z: 0},
                         rotate: {x: 0, y: 0, z: 0},
                         scale: 1
@@ -296,8 +359,11 @@
 
                     this.goto(getElementFromHash() || this.steps[0], 0);
                 },
+                attached: function () {
+                    hi(this.domReady.bind(this));
+                },
                 nextStep: function next(duration) {
-                    var duration = isNaN(duration) ? this.activeStep.duration : duration;
+                    duration = isNaN(duration) ? this.activeStep.transitionDuration : duration;
                     var steps = this.steps;
                     var next = 0;
                     //checks for a nextStep attribute on the active step
@@ -335,8 +401,8 @@
                 goto: function goto(el, duration) {
 
                     var activeStep = this.activeStep;
-                    var currentState = this.currentState;
-                    var windowScale = this.windowScale;
+                    var currentState = this._currentState;
+                    var windowScale = this._windowScale;
                     var root = this;
                     var canvas = this.$.canvas;
 
@@ -447,8 +513,9 @@
                     }
 
                     // store current state
-                    this.currentState = target;
-                    this.activeStep = activeStep = el;
+                    this._currentState = target;
+                    activeStep = el;
+                    this._setActiveStep(activeStep);
 
                     // Fire a entering event after the transition started. This may be important, because it's not sure
                     // that the now step is entered. The transition is canceled when a goto is triggered while the animation
@@ -486,10 +553,8 @@
                     this.goto(getElementFromHash() || this.steps[0], 0);
                 }
             });
-        })();
-    </script>
-</polymer-element>
-
+    })();
+</script>
 <!--
 Navigation API
     [x] goto
