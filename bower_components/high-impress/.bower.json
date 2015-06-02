@@ -7,14 +7,14 @@
   "main": "high-impress.html",
   "dependencies": {
     "marked": "~0.3.3",
-    "polymer": "Polymer/polymer#0.5"
+    "polymer": "Polymer/polymer#^1.0.0"
   },
   "homepage": "https://github.com/no0x9d/high-impress",
-  "_release": "0eb33cf41c",
+  "_release": "d0304f3231",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "0eb33cf41c7590f8fc935f3c0ba1004d35ecd00b"
+    "commit": "d0304f32315c37a19cc195206bd59765ef71a611"
   },
   "_source": "git://github.com/no0x9d/high-impress.git",
   "_target": "master",
