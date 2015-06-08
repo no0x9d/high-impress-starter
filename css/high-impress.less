@@ -1,3 +1,15 @@
+/* import fonts from google api*/
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:700|PT+Sans:700,400,400italic,700italic);
+
+
+/*
+  LESS variables
+*/
+
+@body-font: 'PT Sans', sans-serif;
+@header-font: 'PT Sans narrow', sans-serif;
+@font-size: 24px;
+
 /*
     We start with a good ol' reset.
     That's the one by Eric Meyer http://meyerweb.com/eric/tools/css/reset/
@@ -5,86 +17,20 @@
     You can probably argue if it is needed here, or not, but for sure it
     doesn't do any harm and gives us a fresh start.
 */
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -92,41 +38,40 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+
+ /* html and body element should fill the whole viewport */
+html, body{
+  height: 100vh;
+}
+
 /* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-menu,
-nav,
-section {
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
   display: block;
 }
+
 body {
   line-height: 1;
 }
-ol,
-ul {
-  list-style: none;
+
+ol, ul {
+  //list-style: none;
 }
-blockquote,
-q {
+
+blockquote, q {
   quotes: none;
 }
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+
+blockquote:before, blockquote:after,
+q:before, q:after {
   content: '';
-  content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 /*
     Now here is when interesting things start to appear.
 
@@ -135,27 +80,34 @@ table {
     want to leave anybody behind.
 */
 body {
-  font-family: 'PT Sans', sans-serif;
-  min-height: 740px;
-  background: #d7d7d7;
-  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(#f0f0f0), to(#bebebe));
-  background: -webkit-radial-gradient(#f0f0f0, #bebebe);
-  background: -moz-radial-gradient(#f0f0f0, #bebebe);
-  background: -ms-radial-gradient(#f0f0f0, #bebebe);
-  background: -o-radial-gradient(#f0f0f0, #bebebe);
-  background: radial-gradient(#f0f0f0, #bebebe);
+  font-family: @body-font;
+  font-size: @font-size;
+
+  background: rgb(215, 215, 215);
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+  background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+  background: -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+  background: -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+  background: -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+  background: radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
 }
+
 /*
     Now let's bring some text styles back ...
 */
-b,
-strong {
-  font-weight: bold;
+b, strong {
+  font-weight: bold
 }
-i,
-em {
-  font-style: italic;
+
+i, em {
+  font-style: italic
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  font: @header-font;
+}
+
 /*
     ... and give links a nice look.
 */
@@ -166,49 +118,55 @@ a {
   background: rgba(255, 255, 255, 0.5);
   text-shadow: -1px -1px 2px rgba(100, 100, 100, 0.9);
   border-radius: 0.2em;
+
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
+
+  &:hover, &:focus {
+    background: rgba(255, 255, 255, 1);
+    text-shadow: -1px -1px 2px rgba(100, 100, 100, 0.5);
+  }
 }
-a:hover,
-a:focus {
-  background: #ffffff;
-  text-shadow: -1px -1px 2px rgba(100, 100, 100, 0.5);
-}
+
 /*
     Now let's style the presentation steps.
 
     We start with basics to make sure it displays correctly in everywhere ...
 */
+
 hi-step {
   position: relative;
-  width: 900px;
+  width: 90%;
+  height: 90%;
   padding: 40px;
-  /*margin: 20px auto;*/
+
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
-  font-family: 'PT Serif', georgia, serif;
+
+  font-family: 'PT Sans', sans-serif;
   font-size: 48px;
   line-height: 1.5;
+
   margin: 0;
   opacity: 0.3;
+
   -webkit-transition: opacity 1s;
   -moz-transition: opacity 1s;
   -ms-transition: opacity 1s;
   -o-transition: opacity 1s;
   transition: opacity 1s;
+
+  &.active {
+    opacity: 1
+  }
 }
-hi-step.active {
-  opacity: 1;
-}
-hi-title {
-  width: 900px;
-}
+
 /*
     These 'slide' step styles were heavily inspired by HTML5 Slides:
     http://html5slides.googlecode.com/svn/trunk/styles.css
@@ -219,38 +177,44 @@ hi-title {
 */
 .slide {
   display: block;
-  width: 900px;
-  height: 700px;
+
+  width: 96%;
+  height: 98%;
   padding: 40px 60px;
+
   background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, .3);
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  color: #666666;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-  font-family: 'Open Sans', Arial, sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+
+  color: rgb(102, 102, 102);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+
   font-size: 24px;
   line-height: 36px;
   letter-spacing: -1px;
 }
+
 /*
     substeps can have one of three states, which are expressed by classes, so display of them can be handled by CSS
     There are .future for steps to come, .present for the current substep and .past for already visited.
 */
+
 .substep {
   /*We hide substeps we want to visit in the future*/
+  &.future {
+    opacity: 0;
+  }
   /*The current substeps are fully visible*/
+  &.present {
+    opacity: 1;
+  }
   /*We fade already visited substeps a bit*/
+  &.past {
+    opacity: 0.6;
+  }
 }
-.substep.future {
-  opacity: 0;
-}
-.substep.present {
-  opacity: 1;
-}
-.substep.past {
-  opacity: 0.6;
-}
+
 /*
     And now we start to style each step separately.
 
@@ -261,17 +225,27 @@ hi-title {
     First is the title step with a big <h1> (no room for padding) and some
     3D positioning along Z axis.
 */
-#title h1 {
-  font-size: 56pt;
-  margin: 20px 0 40px;
+
+#maintitle{
+  h1{
+    font-size: 128px;
+  }
 }
-#title h2 {
-  font-size: 30pt;
-  margin-bottom: 20px;
+
+#title {
+  h1{
+    font-size: 64pt;
+    margin: 20px 0 40px;
+  }
+  h2{
+    font-size: 25pt;
+    margin-bottom: 20px;
+  }
+  p{
+    margin-bottom: 15px;
+  }
 }
-#title p {
-  margin-bottom: 15px;
-}
+
 /*
     The last step is an overview.
     There is no content in it, so we make sure it's not visible because we want
@@ -279,5 +253,6 @@ hi-title {
 
 */
 #overview {
-  display: none;
+  display: none
 }
+

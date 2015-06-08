@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- 1. Load platform support before any code that touches the DOM. -->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="bower_components/high-impress/libs/helper.js"></script>
+    <script>
+        window.Polymer = window.Polymer || {};
+        window.Polymer.dom = 'shadow';
+    </script>
+    <!-- 2. Load the component using an HTML Import -->
+    <!-- Load our high-impress with all baseelements-->
+    <link rel="import" href="bower_components/high-impress/high-impress.html">
+
+    <!-- activate the markdown plugin, so we can use the mdText attribute-->
+    <link rel="import" href="bower_components/high-impress/plugins/hi-markdown.html">
+
+    <link rel="import" href="bower_components/high-impress/plugins/hi-progress.html">
+
+
+    <!-- some base styling-->
+
+    <!-- For easier style development I recommend LESS or SCSS-->
+    <!--<link rel="stylesheet/less" href="css/demo.less">-->
+    <!--<script src="bower_components/less/dist/less.js"></script>-->
+
+    <!--<link rel="stylesheet" href="css/high-impress.css">-->
+    <link rel="stylesheet" href="css/sample.css">
+
+</head>
+<body>
+<!-- 3. build the presentation from our custom elements. -->
+
+<!-- Define the presentation with a width and height.-->
+<hi-presentation width="1280" height="720" max-scale="2">
+
+    <hi-step id="maintitle" class="title" transition-duration="0">
+        <h1>high-impress</h1>
+
+        <h2>some things you can do with your presentation</h2>
+
+        <h3><a href="mailto:christoph_hoffmann@nestedloop.de">Christoph Hoffmann</a></h3>
+    </hi-step>
+
+    <hi-step class="slide" x="1280">
+        Normal slide based presentations are simple and fast to do, but can also be boring.
+
+        Perhaps add some animations?!
+    </hi-step>
+
+    <hi-step class="slide" auto-position>
+        Still not to impressive. Perhaps an image will do it
+    </hi-step>
+
+    <hi-step id="look-up" auto-position transition-duration="1800" auto-margin ="200px">
+        <h1 class="substep">LOOK</h1>
+
+        <h1 class="substep">UP!</h1>
+    </hi-step>
+
+    <hi-step id="sky" x="3840" y="-500" z="600" rotate-x="-90" transition-duration="2000">
+        Sky is the limit.
+
+        Now add some details.
+    </hi-step>
+
+    <hi-step id="plane" x="3840" y="-500" z="500" rotate-x="-90" scale="0.02">
+        <div><img src="img/plane.png"></div>
+    </hi-step>
+    <hi-step id="overview" x="500" y="200" scale="7">
+    </hi-step>
+
+
+</hi-presentation>
+<!--<hi-progress></hi-progress>-->
+</body>
+</html>
