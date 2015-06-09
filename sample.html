@@ -25,7 +25,7 @@
     <!--<link rel="stylesheet/less" href="css/demo.less">-->
     <!--<script src="bower_components/less/dist/less.js"></script>-->
 
-    <!--<link rel="stylesheet" href="css/high-impress.css">-->
+    <link rel="stylesheet" href="css/high-impress.css">
     <link rel="stylesheet" href="css/sample.css">
 
 </head>
@@ -35,7 +35,7 @@
 <!-- Define the presentation with a width and height.-->
 <hi-presentation width="1280" height="720" max-scale="2">
 
-    <hi-step id="maintitle" class="title" transition-duration="0">
+    <hi-step id="maintitle" class="title" transition-duration="0" scale="5">
         <h1>high-impress</h1>
 
         <h2>some things you can do with your presentation</h2>
@@ -43,32 +43,52 @@
         <h3><a href="mailto:christoph_hoffmann@nestedloop.de">Christoph Hoffmann</a></h3>
     </hi-step>
 
-    <hi-step class="slide" x="1280">
+    <hi-step class="slide" y="955" x="-2350" z="40" rotate-x="90" scale="0.1">
         Normal slide based presentations are simple and fast to do, but can also be boring.
 
         Perhaps add some animations?!
     </hi-step>
 
-    <hi-step class="slide" auto-position>
+    <hi-step class="slide" y="955" x="-2200" z="40" rotate-x="90" scale="0.1">
         Still not to impressive. Perhaps an image will do it
     </hi-step>
 
-    <hi-step id="look-up" auto-position transition-duration="1800" auto-margin ="200px">
-        <h1 class="substep">LOOK</h1>
-
+    <hi-step id="look-up" y="955" x="-2000" z="40" rotate-x="90" scale="0.1" transition-duration="1800">
+        <h1>Nice, we are getting there, so</h1>
+        <h1 class="substep">HEADS</h1>
         <h1 class="substep">UP!</h1>
     </hi-step>
 
-    <hi-step id="sky" x="3840" y="-500" z="600" rotate-x="-90" transition-duration="2000">
+    <hi-step id="sky" y="880" x="-2000" scale="0.1" transition-duration="2000">
         Sky is the limit.
 
         Now add some details.
     </hi-step>
 
-    <hi-step id="plane" x="3840" y="-500" z="500" rotate-x="-90" scale="0.02">
+    <hi-step id="plane" y="875" x="-2000" scale="0.005" transition-duration="5000">
         <div><img src="img/plane.png"></div>
+        <script>
+            hi(function(){
+               hi("#plane").onLeave(function(){
+                   hi("#earth").show();
+                   hi("#sky").toggleClass("fade-out", true)
+               });
+            });
+        </script>
     </hi-step>
-    <hi-step id="overview" x="500" y="200" scale="7">
+
+    <hi-step y="875" x="-2000" scale="5" transition-duration="2000">
+    </hi-step>
+
+    <hi-asset id="earth" class="hide" x="-1800" y="700" z="-10" scale="1.4">
+        <div><img src="img/globe_west_2048.png" ></div>
+    </hi-asset>
+
+    <hi-step id="globe" x="500" y="200" scale="6">
+
+    </hi-step>
+
+    <hi-step id="overview" x="500" y="200" scale="6">
     </hi-step>
 
 
