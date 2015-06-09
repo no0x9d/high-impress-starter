@@ -38,19 +38,23 @@
     <hi-step id="maintitle" class="title" transition-duration="0" scale="5">
         <h1>high-impress</h1>
 
-        <h2>some things you can do with your presentation</h2>
+        <h2>things you can do with your presentations</h2>
 
-        <h3><a href="mailto:christoph_hoffmann@nestedloop.de">Christoph Hoffmann</a></h3>
+        <h3><a href="mailto:christoph_hoffmann@nestedloop.de">by Christoph Hoffmann</a></h3>
     </hi-step>
 
     <hi-step class="slide" y="955" x="-2350" z="40" rotate-x="90" scale="0.1">
-        Normal slide based presentations are simple and fast to do, but can also be boring.
+        <h1>Slide based Presentations</h1>
+        <p>Everybody knows normal slide based presentations, like the ones from PowerPoint.</p>
+        <p>They are simple and fast to make, but can also be boring.</p>
 
-        Perhaps add some animations?!
+        <p>Perhaps some transition animations help?!</p>
     </hi-step>
 
     <hi-step class="slide" y="955" x="-2200" z="40" rotate-x="90" scale="0.1">
-        Still not to impressive. Perhaps an image will do it
+        <p>Well, still not to impressive.</p>
+
+        <p>Perhaps an image will do it</p>
     </hi-step>
 
     <hi-step id="look-up" y="955" x="-2000" z="40" rotate-x="90" scale="0.1" transition-duration="1800">
@@ -60,18 +64,29 @@
     </hi-step>
 
     <hi-step id="sky" y="880" x="-2000" scale="0.1" transition-duration="2000">
-        Sky is the limit.
+        Wow! Now that we have our transitions we can focus on details.
 
-        Now add some details.
+        <div class="circle substep"></div>
+        <script>
+            hi(function(){
+                hi("#sky").onEntering(function(){
+                    hi("#sky").toggleClass("fade-out", false)
+                });
+            });
+        </script>
     </hi-step>
 
     <hi-step id="plane" y="875" x="-2000" scale="0.005" transition-duration="5000">
         <div><img src="img/plane.png"></div>
+        <h1>
+            But don't loose your big picture!
+        </h1>
         <script>
             hi(function(){
                hi("#plane").onLeave(function(){
                    hi("#earth").show();
                    hi("#sky").toggleClass("fade-out", true)
+                   hi("#plane").toggleClass("fade-out", true)
                });
             });
         </script>
