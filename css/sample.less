@@ -18,7 +18,7 @@ html body {
   display: block;
 }
 
-body{
+body {
   &.hi-on-maintitle {
     hi-step {
       display: none;
@@ -27,25 +27,26 @@ body{
       display: block;
     }
   }
-    transition: background 1s ease-in;
-    &.hi-on-look-up{
-        background: #ddd;
-    }
-    
-    &.hi-on-sky{
-        background: #002157;
-//        background: linear-gradient(to bottom, #011749 0%,#00326d 40%,#7b9ba6 100%);
-    }
-    &.hi-on-plane{
-        transition: background 2s 1s ease-in;
-    }
+  transition: background 1s ease-in;
+  &.hi-on-look-up {
+    background: #ddd;
+  }
+
+  &.hi-on-sky {
+    background: #002157;
+    //        background: linear-gradient(to bottom, #011749 0%,#00326d 40%,#7b9ba6 100%);
+  }
+  &.hi-on-plane {
+    transition: background 2s 1s ease-in;
+  }
 }
+
 #maintitle {
   h1 {
     font-size: 156px;
   }
 
-  h2{
+  h2 {
     margin-top: 50px;
     font-size: 56px;
   }
@@ -65,10 +66,33 @@ body{
   }
 }
 
+.slide {
+  h1 {
+    font-size: 72px;
+    color: #bebebe;
+    margin: 50px 0;
+  }
+
+  font-size: 36px;
+}
+
 #look-up {
   .full-size;
   background: url("../img/look-up.jpg") no-repeat center center;
   background-size: contain;
+  div {
+    font-size: 80px;
+    font-weight: 700 ;
+  }
+
+  .heads, .up{
+    font-size: 136px;
+    text-align: right;
+    margin-right: 200px;
+    &.past{
+      opacity: 1;
+    }
+  }
 }
 
 #sky {
@@ -76,21 +100,29 @@ body{
   background: url("../img/clouds_cloudy_sun.jpg") no-repeat center center;
   background-size: contain;
 
-  &.fade-out{
+  div {
+    font-size: 54px;
+    font-weight: 700;
+    margin-top: 50px;
+    width: 40%;
+  }
+
+  &.fade-out {
     opacity: 0;
     transition: opacity 1.5s 3s;
   }
 
-  & div.circle{
+  & div.circle {
     position: absolute;
     width: 50px;
     height: 50px;
-    left: 625px ;
+    left: 625px;
     top: 280px;
     border: solid 3px red;
     border-radius: 50%;
+    margin-top: 0;
   }
-  .substep.past{
+  .substep.past {
     opacity: 0;
     transition: opacity .5s;
   }
