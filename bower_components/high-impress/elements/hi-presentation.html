@@ -1,4 +1,5 @@
 <link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../libs/hi-basefunctions.html">
 
 <dom-module id="hi-presentation">
     <template>
@@ -69,6 +70,7 @@
                         step.x = prevStep.x
                                 + width * prevStep.scale + width * step.scale
                                 + (step.autoMargin || presentation.autoMargin);
+                        step.y = prevStep.y;
                     }
                 }
             };
